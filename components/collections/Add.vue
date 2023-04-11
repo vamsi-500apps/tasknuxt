@@ -144,6 +144,7 @@ const userDetails = ref({
   dateOfJoining: "",
   designation: "",
 });
+
 //sending data to the emit
 const saveData = () => {
   open.value = false;

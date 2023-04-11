@@ -1,6 +1,6 @@
 <template>
   <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-    <h3 class="text-base font-semibold leading-6 text-gray-900">logIn Name:{{  }}</h3>
+    <h3 class="text-base font-semibold leading-6 text-gray-900">employee</h3>
   
   <div class="px-4 sm:px-6 lg:px-8 p-5">
     <div class="sm:flex sm:items-center">
@@ -89,15 +89,13 @@
                 >
                   {{ employee.designation }}
                 </td>
-                <td class="sm">
-                  <!-- <TrashIcon @click="deleteData(employee,index)"/> -->
+                <td class="whitespace-nowrap px-2 text-center py-2 text-sm text-gray-500">
+                  <button @click="EditEmployee">edit</button>
                 </td>
                 <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">
-                  
+                  <button @click="deleteData(index)">delete</button>
                 </td>
-                <td
-                  class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
-                ></td>
+                
               </tr>
             </tbody>
           </table>
@@ -114,14 +112,23 @@ import { TrashIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
   EmployeesData: {
-    type: Object,
+    type: Array,
   },
 });
-const emit = defineEmits(["slideout"]);
+const emit = defineEmits(["slideout","edit","deletedata"]);
 
 //open sidebar for Add
 const AddEmploye = () => {
   emit("slideout");
   
 };
+const EditEmployee = () => {
+  emit("edit");
+ 
+  
+};
+const deleteData=(index:Number)=>{
+  emit("deletedata",index)
+
+}
 </script>
